@@ -1,0 +1,266 @@
+# [딥러닝]
+
+- Base
+    - 인공지능과 인간지능의 차이점
+        - 인간지능은 타고난 지능과 경험을 통해 습득한 지능이고, 인공지능은 이러한 인간지능을 컴퓨터로 구현하는 기술이다.
+    - 인공지능,기계학습,딥러닝의 차이점
+        - 인공지능: 인간의 지능을 컴퓨터로 구현 하는 것
+        - 기계학습: 데이터로부터 학습하여 예측이나 의사결정을 수행하는  인공지능 분야
+        - 딥러닝: 인공 신경망을 사용하여 데이터로부터 학습
+    - 배치학습, 온라인학습 차이점
+        - 배치학습: 전체 데이터를 한 번에 학습
+        - 온라인 학습: 데이터 하나씩 순차적으로 학습
+    - 학습률, 에포크 용어 정의
+        - 학습률: 학습 과정에서 모델의 가중치가 얼마나 업데이트 될지 결정하는 하이퍼파라미터
+        - 에포크 : 학습 데이터 전체를 한 번 학습하는 과정
+    - k-폴드교차검증 사용하는 이유
+        - 모델 성능 평가
+        - 데이터의 최대 활용
+    - 정밀도와 재현율
+        - 정밀도(precision) : 양성으로 예측 한 것 중 실제 양성 비율
+        - 재현율(Recall) : 실제 양성 중에서 양성으로 예측한 비율
+    - 경사하강법(확률,배치,미니배치)
+        - 확률적 경사하강법 : 하나의 샘플을 사용하여 기울기를 계산하고 파라미터 업데이트
+        - 배치 경사하강법: 전체 데이터셋을 사용하여 기울기를 계산하고 파라미터 업데이트
+        - 미니배치 경사하강법 : 데이터셋을 작은 배치로 나누어 각 배치마다 기울기를 계산하고 파라미터 업데이트
+    - 과대적합(오버피팅) 정의
+        - 학습 데이터에 너무 잘 맞춰져 있어 새로운 데이터에 대한 성능이 저하됨
+    - 서포트벡터와 서포트벡터머신의 차이점
+        - 서포트벡터: 분류문제에서 초평선과 가장 가까운 데이터 포인트
+        - SVM : 서포트벡터를 활용하여 데이터를 분류하는 기계학습 알고리즘
+    - 소프트마진과 하드마진
+        - 하드마진 : 서포트벡터와 초평면 사이의 거리가 최대한 넓게 하는 방식
+        - 소프트마진 : 일부 데이터 포인트가 초평면보다 가까이 있어도 허용하는 방식
+    - 서포트벡터머신 커널을 사용하는 이유
+        - 커널을 사용하면 비선형 분류도 가능
+        - 고차원 데이터 처리도 가능
+    - 결정트리 CART 알고리즘이란?
+        - 지니 불순도를 기반으로 최적의 분할 기준을 선택하여 결정 트리 생성
+        - 이진트리를 사용
+    - 결정트리 sample속성,value속성,gini속성 차이점
+        - sample 속성 : 노드에 속하는 데이터 포인트의 개수
+        - value 속성 : 각 클래스에 속하는 데이터 포인트의 개수
+        - gini 속성 : 노드의 불순도를 나타냄
+    - 결정트리 지니 불순도란?
+        - 데이터가 얼마나 혼합되어 있는지 나타냄
+    - 결정트리 max_features, max_leaf_nodes, min_samples_split, min_samples_leaf, min_weight_fraction_leaf 용어 정의
+        - max_features : 각 분할에서 고려할 최대 특징 수
+        - max_leaf_nodes : 최대 잎 노드 수
+        - min_samples_split : 분할을 수행하기 위한 최소 샘플 수
+            - min_weight_fraction_leaf : 리프 노드가 되기 위한 최소 가중치 비율
+        - min_samples_leaf : 리프 노드가 되기 위한 최소 샘플 수
+    - 기타 선형회귀, SVM, 결정트리 등 기계학습에 관한 내용
+- NN(Neural Network)
+    - 학습은 결국 w(가중치), b(편향)을 구하기 위함
+    - 딥러닝의 등장 배경
+        - 한 개의 층으로 XOR을 표현할 수 없음 → 직선이 아닌 곡선으로 층을 깊게 하여 해결
+        
+    - 활성화 함수(Activation function)
+        - 비선형 변환을 통해 특징 추출
+        - Sigmoid(0~1 표현), Tanh(-1~1 표현), ReLU(0 이하를 날리고 이상은 유지), LeakyReLU(ReLU의 단점 보완)
+    - 손실 함수(loss function)
+        - 단일 출력 손실함수
+            - Regression loss function
+                - MAE(Mean Absolute Error)
+                - MSE(Mean Square Error)
+                - RMSE(Root Mean Square Error)
+            - Classification loss function
+                - Binary Cross Entropy
+        - 다중 출력 손실함수
+            - Categorical Cross Entropy
+        - 손실함수를 통해서 기울기가 0인 곳(loss가 min)을 찾음
+    - Optimizer
+        - epoch : 전체 데이터셋을 한 번 학습 완료하는 시점
+        - batch size : 한 배치의 데이터 수
+        - Iteration : 한 epoch을 완료하기 위해 실행 횟수
+        - Gradient Descenet
+            - 경사 하강법
+            - 한 번 학습할 때마다 모든 데이터셋을 이용 → 오래 걸림
+            - 학습률을 정해야 함
+        - SGD (Stochastic Gradient Descent)
+            - 확률적 경사하강법
+            - 전체 데이터를 사용하지 않고 batch size만큼 데이터를 추출하여 학습
+        - Momentum
+            - SGD에 관성을 적용
+            - local minimum 방지를 위해 관성 사용
+        - NAG(Nesteror Accelerated Gradient)
+            - 관성을 먼저 적용한 다음 그 자리에서 gradient 구함
+        - Adagrad
+            - 지금까지 많이 변화하지 않은 변수들은 step size를 크게, 지금까지 많이 변화했던 변수들은 step size를 작게
+            - 학습을 계속 진행하다보면 학습률이 계속 작아져서 결국 거의 움직이지 않는 문제 발생
+        - RMSProp
+            - Adagrad의 학습률 감소 문제를 해결
+        - Adam(Adaptive Moment Estimation)
+            - RMSProp와 Momentum을 결합
+    - 역전파
+        - 손실함수를 통해 weight 조절
+    - 딥러닝의 장점&단점, 한계
+        - 장점 : 특징 자동 추출(learned - feature)
+        - 단점 : 많은 학습 데이터 필요, 많은 시간과 노력 필요, 오류 파악 & 디버깅 어려움, 데이터 만들 때 드는 비용 많음(→ 생성형 모델로 보완)
+        - Overfitting
+        - Gradient Vanishing → 드롭아웃(dropout) 기법
+        
+- CNN(Convolutional Neural Network)
+    - CNN의 등장 배경
+        - 매개변수의 개수 → 계산 비용 증가 & overfitting
+            - 공유 가중치 & 희소 연결을 통해 해결
+        - 공간적 구조의 무시 → 공관적 관계 무시는 이미지 인식에서 중요한 정보의 손실
+            - 필터가 이미지의 지역적인 패턴 감지 & 다음 계층으로 전달
+        - 변형에 대한 적응성 부족 → 변형된 이미지를 완전히 새로운 이미지로 인식할 수 있음
+            - 풀링 계층을 사용하여 해결
+        - 네오코그니트론(쿠니히코 후쿠시마)
+            - 허블 & 비셀 (고양이 실험)에 영감을 받아, 생체적인 특징을 이용해서 모델을 만들어봄
+    - CNN의 등장
+        - Convolution layer & Subsampling layer
+        - Convolution 연산
+            - 경계선 검출, 스무딩, 샤프닝 etc
+            - 차원의 개수(Depth)랑 필터의 개수(Depth)는 맞춰줘야 함 <TEST>
+            - 특징이 다양해서 뽑아야 하는 특징이 많으면 필터를 많이 쓰고, 적을 경우 필터 적게 사용
+            - 필터를 적용할 때마다 img size가 점점 작아짐 → solution : zero - padding
+                - zero - padding
+                    - 장점
+                    1. 크기 유지
+                    2. 정보 보존
+                    3. 특징 감지
+                    - 단점
+                    1. 인공적인 특징
+                    2. 과적합 
+                        
+                        → 정규화 기법들을 통해 상쇄
+                        
+            - stride : convolution시 다음으로 이동할 때 몇 칸만큼 갈 것인지 → 이미지 size를 줄이는 효과
+        - Subsampling 연산
+            - 이미지를 작게 만들어 눈에 띄는 특징을 뽑음
+            - convolution과 다르게 채널의 수 유지
+            - Max Pooling
+                - 데이터의 변화가 있어도 강건함
+            - Average Pooling
+        - CNN의 특징
+            - 희소 연결 성질
+            - 파라미터 공유 성질
+            - 이동등변성
+            - 위치 불변성
+    - GPU 사용 & 대규모 데이터셋(ImageNet)의 등장 → CNN이 다시 각광받음
+    - 다양한 CNN 기반 모델
+        - AlexNet
+            - 2개의 GPU를 병렬처리
+            - 5개의 convolution layer & 3개의 fully-connected layer & Max Pooling
+            - ReLU 활성화 함수 사용
+            - Overfitting 방지를 위한 드롭아웃과 데이터 증강
+        - ZFNet
+            - filter의 크기와 개수를 바꿨다~ 정도
+            - Convolution layer의 시각화 → 예측결과의 이유를 조금씩 이해하기 시작
+        - VGGNet
+            - 작은 필터를 깊게 쌓았더니 예측을 잘함
+        - GoogleNet(InceptionNet v1)
+            - Inception 모듈 → 계산량 감소
+            - Gradient Vanish 극복을 위해 중간에 두 개의 보조 분류기(Auxiliary classifiers)가 사용
+        - ResNet
+            - 인간의 인지 능력보다 뛰어남
+            - Residual Learning : 층이 깊어져도 학습을 잘함
+                - But, 1000층이 넘어가면 한계 발생
+- RNN(Recurrent Neural Network) & NLP
+    - RNN의 등장 배경
+        - 고정된 입력 크기
+            - 시퀀스의 각 요소를 순차적으로 처리, 가변 길이의 데이터에서도 유연하게 작동할 수 있는 구조
+        - 시간 종속성 무시
+            - 이전 단계의 출력을 현재 단계의 입력으로 포함
+        - 연속 데이터 처리의 어려움
+            - 순환 구조를 통해 시퀀스 뎅터의 연속적인 패턴 학습, 과거 정보 기억하여 다음 예측에 활용
+    - RNN
+        - 시간적 공간적 순서 관계가 있는 순차 데이터는 문맥 또는 context를 가짐
+        - weight는 시간이 흘러도 변하지 않음 → 즉, 공유한다
+            - CNN은 이미지를 구역별로 같은 weight를 공유하고, RNN은 시간별로 같은 weight를 공유
+        - 순환층(hidden layer 값을 다시 한 번 입력으로 넣어줌) + 출력층
+            1. 순차 구조를 포착할 수 있음
+            2. 가변 길이 데이터 처리 easy
+            3. 파라미터 수 save & 정규화 효과
+        - Loss
+            - 출력이 하나일 경우
+                - 출력과 정답 비교
+            - 출력이 여러 개일 경우
+                - 출력의 평균/합 etc…을 정답과 비교
+        - LSTM
+            - RNN의 Gradient 소실과 폭발 문제로 LSTM 등장
+            - 셀 상태(장기 기억): 성능 향상의 주요 & 은닉 상태(단기 기억)
+            - Forget Gate : cell이 얼마나 기억하게 할지
+            - Input Gate : activation 2개
+            - Output Gate
+        - GRU
+            - LSTM의 단점인 계산이 오래 걸린다는 것을극복
+            - Cell state가 없음
+    - NLP
+        - Character Embedding
+            - 계산 복잡도 증가
+            - 문맥 정보 손실
+        - Word Embedding
+            - 비슷한 단어의 의미가 비슷하게 표현 안 됨
+            - Solution : Embedding Vector 사용
+            - 모델 이용
+                - weight를 embedding vector로 사용 → 비슷한 단어끼리 뭉치게 됨
+                - Continuous Bag of Words : 앞뒤 단어 입력 후, 중간꺼 예측
+                - Skip Gram : 중간 입력 후, 앞뒤 예측
+- Attention & Transformer
+    - seq2seq
+        - LSTM 사용
+        - context vector : 문장의 특징을 잘 표현하는 숫자 모음
+        - encoder 단계 : 입력 시퀀스를 context vector로 변환
+        - decoder 단계 : context vector를 사용하여 출력 시퀀스를 생성
+    - Attention
+        - LSTM 셀의 개수, context vector의 길이 고정(병목 발생) → 다량의 내용을 입력으로 넣을 경우 정보의 손실 발생 →solution : Attention
+        - query(q) : 현재 처리하고 있는 입력 또는 단어를 표현하는 벡터, t시점에서의 decoder 셀의 hidden state
+        - key(k) : 각 입력 데이터를 표현하는 벡터, Query와 비교되어 얼마나 관련이 있는지 평가하는데 사용, 모든 시점의 encoder 셀의 hidden state
+        - Value(v) : Key와 연관된 값으로, Key가 Query와 얼마나 잘 매칭되는지에 따라 이 값들이 가중합되어 최종출력에 기여, 모든 시점의 encoder 셀의 hidden state
+        - Self attention
+            - 자신을 구성하는 부분끼리 연관성을 찾고자 할 때 사용
+    - Transformer
+        - 전적으로 어텐션 메커니즘에 기반을 둔 첫 번째 모델
+        - 병럴처리 가능, 대규모 데이터셋에서 빠르게
+        - Positional Encoding : 입력에서 내가 어떤 위치에 있는지 저장 후 모델에 보내줌, 위치정보 부여
+        - encoder : 입력 문장의 단어들 간의 관계를 파악하고 문맥 정보 추출
+        - decoder : encoder 정보를 바탕으로 출력
+        - Multi-Head Attention
+            1. Encoder Self-Attetion
+            2. Masked Decoder Self-Attention(초안)
+            3. Encoder-Decoder Attention(완전체) : encoder를 입력으로 받음
+        - BERT : encoder만 사용
+        - GPT : decoder만 사용, zero-shot learning, fine-tuning
+        - CLIP : 멀티모달 모델
+        - Dall-E : 텍스트를 바탕으로 이미지 생성
+        - Codex : 코드 생성
+- 생성형 모델
+    - 데이터의 확률 분포를 학습하여 새로운 데이터를 생성
+    - 입력 데이터, 잠재 공간, 생성 데이터
+    - 데이터의 분포를 학습하여, 그 분포에서 새로운 샘플을 생성
+    - Tractable density : 데이터를 보고 확률분포 직접 구하기
+    - Approximate density : 데이터 보고 확률분포 추정하기
+    - Implicit density : 데이터 분포 몰라도 됨
+    - PixelRNN
+        - 이전 픽셀들로부터 LSTM 통해 생성
+        - 시간이 오래 걸림
+    - PixelCNN
+        - convolution 돌리고 최종은 256으로 출력(0~255 예측을 위함) → 가장 큰 값을 입력으로
+    - Autoencoder
+        - Approximate density : 데이터를 보고 확률 분포를 추정하는 방식
+        - 데이터에서 내가 필요한 특징을 작게 만들기 위해 사용(입력데이터를 압축된 형태로 인코딩) → 큰 입력으로부터 embedding vector 만듦
+        - 입력과 출력 이미지는 같아야 함
+        - encoder가 중요한 역할
+        - Transfer learning : 이미지 전체를 입력으로 넣는 것이 아닌, 이미지의 특징을 잘 학습한 벡터를 분류기에 넣음
+        - loss function 1개 사용
+    - VAE
+        - Autoencoder의 데이터 생성 능력이 제한적
+        - 처음 보는 데이터를 만들면 좋겠다 → decoder가 중요
+        - 평균과 표준편차 이용해서 latent space에 넣어줄때 subsampling → 항상 같은 z값이 나오지 않아 같은 입력에 대해 다른 결과가 나올 수 있음
+            - random sampling은 back propagation 불가 → Reparmeterization Trick 이용
+        - Loss 함수 2개 이용 < TEST >
+            - Reconstruction Error
+            - Regularization
+    - GAN
+        - Implicit density : 데이터 분포를 몰라도 되는 방법
+        - 생성기(Generator)와 판별기(Discriminator)의 경쟁
+            - 판별기는 보조장치고, 생성기가 우리의 본 목적
+        - 목적함수를 이용하여 유사도 측정
+            - minmax V(D,G)
+        - Pix2Pix: 사용자 task 해결을 위한 model
+        - CycleGAN: 한국인
+        - Dataset의 증가 → 딥러닝 단점 보완
