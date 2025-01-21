@@ -1,6 +1,4 @@
 # DL_prac
-<br/>
- 
 ## 1. CNN
 - tensorflow의 Convolutional layer 사용해서 MNIST 학습해보기
 - Conv2D 직접 만들어서 library랑 비교해보기
